@@ -3,24 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>WiFi Gratis</title>
-  <style>
-  body {
-    margin: 0;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
 
-  img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
-  }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Pantalla fake */
+    #loading {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #444;
+      border-top: 6px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Imagen final */
+    #image {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   </style>
 </head>
+
 <body>
-  <img src="WifiGratis.jpg" alt="WiFi Gratis">
+
+  <!-- Pantalla falsa -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <h2>Conectando al WiFi…</h2>
+    <p>Validando red segura</p>
+  </div>
+
+  <!-- Imagen troll -->
+  <img id="image" src="WifiGratis.jpg" alt="WiFi Gratis">
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("image").style.display = "block";
+    }, 1800); // 1.8 segundos
+  </script>
+
 </body>
 </html>
